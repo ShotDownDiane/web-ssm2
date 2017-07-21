@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="User">
+
+    <resultMap id="UserBaseMap" type="com.heitian.ssm.model.User">
+        <id column="userID" property="id" jdbcType="VARCHAR"/>
+        <result column="username" property="userName" jdbcType="VARCHAR"/>
+        <result column="password" property="userPwd" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <select id="selectUserById" parameterType="java.lang.String" resultMap="UserBaseMap">
+        SELECT * FROM userinfor
+        WHERE userID = #{userId}
+    </select>
+
+    <select id="selectAllUser" resultMap="UserBaseMap">
+        SELECT * FROM userinfor
+    </select>
+
+</mapper>
+<!--<mapper namespace="Question">-->
+    <!--<resultMap id="QuestionBaseMap" type="com.heitian.ssm.model.Question">-->
+        <!--<id column="questID" property="questionID" jdbcType="VAECHAR"/>-->
+        <!--<result column="userID" property="userID" jdbcType="VARCHAR"/>-->
+        <!--<result column="title" property="title" jdbcType="VARCHAR">-->
+        <!--<result column="text" property="text" jdbcType="String">-->
+        <!--<result column="pay" property="pay" jdbcType="INTEGER">-->
+        <!--<result column="kind" property="kind" jdbcType="VARCHAR">-->
+        <!--<result column="tag" property="tag" jdbcType="VARCHAR">-->
+        <!--</result>-->
+    <!--</resultMap>-->
+    <!--<select id="selectQuestionByQID" resultMap="QuestionBaseMap" parameterType="String">-->
+        <!--SELECT * FROM Question WHERE questionID=#{questionID}-->
+    <!--</select>-->
+    <!--<select id="selectQuestionByPage" resultMap="QuestionBaseMap" parameterType="INTEGER">-->
+        <!--SELECT * FROM Question WHERE ROW_COUNT < 10*#{page}-->
+    <!--</select>-->
+    <!--<select id="selectQuestionByUID" resultMap="QuestionBaseMap" parameterType="String">-->
+        <!--SELECT * FROM Question WHERE userID=#{userID}-->
+    <!--</select>-->
+<!--</mapper>-->

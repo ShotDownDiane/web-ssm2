@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Question">
+        <resultMap id="QuestionBaseMap" type="com.heitian.ssm.model.Question">
+            <id column="questID" property="questionID" jdbcType="VAECHAR"/>
+            <result column="userID" property="userID" jdbcType="VARCHAR"/>
+            <result column="title" property="title" jdbcType="VARCHAR"/>
+            <result column="text" property="text" jdbcType="VARCHAR"/>
+            <result column="pay" property="pay" jdbcType="INTEGER"/>
+            <result column="kind" property="kind" jdbcType="VARCHAR"/>
+            <result column="tag" property="tag" jdbcType="VARCHAR"></result>
+        </resultMap>
+
+        <select id="selectQuestionByQID" resultMap="QuestionBaseMap" parameterType="String">
+            SELECT * FROM Question WHERE questionID = #{questionID}
+        </select>
+
+        <select id="selectQuestionByPage" resultMap="QuestionBaseMap" parameterType="INTEGER">
+            SELECT * FROM Question WHERE 10 &lt; ${page}
+        </select>
+        <select id="selectQuestionByUID" resultMap="QuestionBaseMap" parameterType="String">
+            SELECT * FROM Question WHERE userID=#{userID}
+        </select>
+</mapper>
